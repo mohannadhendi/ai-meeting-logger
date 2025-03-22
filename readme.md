@@ -82,6 +82,14 @@ With **FastAPI, Whisper, and LangChain**, this project helps consultants and tea
 ### 5️⃣ `/notify/`
 - Input: Same JSON as `/save/`
 - Action: Sends formatted email with extracted info
+  
+  ![Screenshot from 2025-03-22 03-33-38](https://github.com/user-attachments/assets/dcc27267-3036-44b2-ba50-4f39f722221f)
+
+- Sample of email
+
+  ![Screenshot from 2025-03-22 03-35-25](https://github.com/user-attachments/assets/ab511271-585f-4e19-a5ab-ff7afa581dac)
+
+
 
 ---
 
