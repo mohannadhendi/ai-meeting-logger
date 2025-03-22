@@ -97,7 +97,7 @@ With **FastAPI, Whisper, and LangChain**, this project helps consultants and tea
 
 ### ✅ 1. Clone and Setup
 ```bash
-git clone https://github.com/yourusername/ai-meeting-logger.git
+git clone https://github.com/mohannadhendi/ai-meeting-logger.git
 cd ai-meeting-logger
 python -m venv venv
 source venv/bin/activate
