@@ -96,12 +96,30 @@ You can trigger the pipeline automatically using n8n.
 
 ### 🔹 **Uploading JSON Files to n8n**
 1. Open **n8n** and create a new workflow.
-2. Upload your meeting data JSON file.
-3. Pass the data through the following nodes:
+   
+   ![Screenshot from 2025-03-22 03-13-16](https://github.com/user-attachments/assets/21a4c811-79bd-4849-a819-812834cf8d59)
+
+3. Send audio file to webhook using API.
+   
+   ![webhook_node](https://github.com/user-attachments/assets/030c1748-d0ae-4036-a7a8-0b879a48b13e)
+
+5. Pass the data through the following nodes:
    - **HTTP Request (Transcribe)** → Sends audio to `/transcribe/`
+     
+     ![Screenshot from 2025-03-22 03-19-09](https://github.com/user-attachments/assets/fbbd117a-51d4-494e-869e-f44aa224bacb)
+
    - **HTTP Request (Extract)** → Sends transcript to `/extract/`
+     
+     ![Screenshot from 2025-03-22 03-20-11](https://github.com/user-attachments/assets/8c0945dc-20dd-4d80-a847-71fdec0df243)
+
    - **HTTP Request (Save)** → Saves structured data
+     
+     ![Screenshot from 2025-03-22 03-20-47](https://github.com/user-attachments/assets/0537a092-65c0-4cb7-9bfa-80922f38f767)
+
    - **HTTP Request (Notify)** → Sends summary email
+     
+     ![Screenshot from 2025-03-22 03-21-31](https://github.com/user-attachments/assets/ad8bbee9-94f5-4566-b51c-11d29b4614a3)
+
 
 ### Sample Workflow:
 
