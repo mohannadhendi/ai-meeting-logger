@@ -1,0 +1,21 @@
+# Sensitive environment variables
+.env
+
+# Ignore only specific sensitive JSON files
+Meeting_Data_Extraction.json
+meetingagent-454204-ba12f8f171c6.json
+
+# Allow example JSONs (negated rule)
+!Meeting_Data_Extraction.json
+
+# Ignore Python cache directories
+__pycache__/
+**/__pycache__/
+
+# Ignore Python compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore logs
+*.log

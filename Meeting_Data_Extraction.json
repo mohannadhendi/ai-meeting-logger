@@ -1,0 +1,171 @@
+{
+  "name": "Meeting Data Extraction",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bcef6295-a7ca-4f1b-beec-16ed629b9e95",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1800,
+        240
+      ],
+      "id": "6eed9a7f-e28f-4952-bf34-871a18ec2e43",
+      "name": "Receive Audio File",
+      "webhookId": "bcef6295-a7ca-4f1b-beec-16ed629b9e95"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/transcribe/",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "file"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1540,
+        240
+      ],
+      "id": "5d9b1a5e-62ec-4ade-baf3-8a33ae92170f",
+      "name": "Transcribe Audio",
+      "notesInFlow": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/extract/",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"transcript\": \"{{ $json[\"transcript\"] }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1240,
+        240
+      ],
+      "id": "21a6d227-2872-48a5-8677-827a8475639e",
+      "name": "Extract Meeting Details",
+      "notesInFlow": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/save/",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"name\":\"{{ $json.name }}\",\"start_time\":\"{{ $json.start_time }}\",\"end_time\":\"{{ $json.end_time }}\",\"total_hours\":\"{{ $json.total_hours }}\",\"meeting_date\":\"{{ $json.meeting_date }}\",\"note\":\"{{ $json.note }}\",\"transcript\":\"{{ $json.transcript }}\"}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1000,
+        80
+      ],
+      "id": "3b60092e-e604-49e5-9c45-05b7bc7b398c",
+      "name": "Save to Google Sheets",
+      "notesInFlow": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/notify/",
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={\"name\":\"{{ $json.name }}\",\"start_time\":\"{{ $json.start_time }}\",\"end_time\":\"{{ $json.end_time }}\",\"total_hours\":\"{{ $json.total_hours }}\",\"meeting_date\":\"{{ $json.meeting_date }}\",\"note\":\"{{ $json.note }}\",\"transcript\":\"{{ $json.transcript }}\"}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1000,
+        360
+      ],
+      "id": "33ccc4fd-cf52-44f4-b50b-45f49cd74a7b",
+      "name": "Send Meeting Summary Email",
+      "notesInFlow": true,
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Receive Audio File": {
+      "main": [
+        [
+          {
+            "node": "Transcribe Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe Audio": {
+      "main": [
+        [
+          {
+            "node": "Extract Meeting Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Meeting Details": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Meeting Summary Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Google Sheets": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2c904466-0c43-4af3-8a1c-b97ca8889a49",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cc3ed5a18f3bb94557edd627124d6d97cf5d390ea09a742f25fa71375dbf7032"
+  },
+  "id": "raZ2wYWqukBEbOb5",
+  "tags": []
+}
