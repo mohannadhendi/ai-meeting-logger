@@ -48,7 +48,10 @@ With **FastAPI, Whisper, and LangChain**, this project helps consultants and tea
   - Extracts info
   - Adds transcript to result
   - Saves to Google Sheets
-  - Sends email 
+  - Sends email
+  
+    ![Screenshot from 2025-03-22 03-24-27](https://github.com/user-attachments/assets/ec138ccf-83c7-4626-bcfd-969727d0b928)
+
 
 ### 2️⃣ `/transcribe/`
 - Input: `.mp3` audio file
