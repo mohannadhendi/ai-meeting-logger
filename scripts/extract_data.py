@@ -25,8 +25,8 @@ json_prompt = """
 
 **Instructions:**
 1. For the customer name, look for an introduction phrase such as "Hi, this is [Name]" or "Hello, this is [Name]". Extract only the name (e.g., "Sarah"). If no name is mentioned, return an empty string.
-2. For start and end times, extract them in the format '3:15 PM' and '4:45 PM'. If the times are missing colons, fix them accordingly.
-3. If total hours is not provided explicitly, calculate it from the start and end times.
+2. For start and end times, extract them ONLY if explicitly mentioned in the text (e.g., '3:15 PM' or '4:45 PM'). If they are not clearly stated, return empty strings.
+3. If total hours is explicitly stated (e.g., "lasting 1.5 hours"), include it. Otherwise, leave it empty.
 4. For the meeting date, extract it if present; otherwise, default to today's date.
 5. Extract any additional meeting notes provided.
 
