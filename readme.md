@@ -119,7 +119,7 @@ Use **Postman**, **cURL**, or browser to access:
 
 You can trigger the pipeline automatically using n8n.
 
-### 🔹 **Uploading JSON Files to n8n**
+### 🔹 **Uploading JSON Files to n8n (Meeting_Data_Extraction.json)**
 1. Open **n8n** and create a new workflow.
    
    ![Screenshot from 2025-03-22 03-13-16](https://github.com/user-attachments/assets/21a4c811-79bd-4849-a819-812834cf8d59)
