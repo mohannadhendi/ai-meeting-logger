@@ -57,13 +57,27 @@ With **FastAPI, Whisper, and LangChain**, this project helps consultants and tea
 - Input: `.mp3` audio file
 - Output: transcript (text)
 
+  ![Screenshot from 2025-03-22 03-27-32](https://github.com/user-attachments/assets/182bdce9-fc86-4d6a-800a-93b3a06da81c)
+
+
 ### 3️⃣ `/extract/`
 - Input: JSON with `transcript`
 - Output: Extracted fields like `name`, `start_time`, `note`, etc.
 
+  ![Screenshot from 2025-03-22 03-28-46](https://github.com/user-attachments/assets/4a662a9a-4352-4603-8fdd-d1af7880fe04)
+
+
 ### 4️⃣ `/save/`
 - Input: JSON object with meeting fields
 - Output: Saves a row to Google Sheets
+
+  ![Screenshot from 2025-03-22 03-29-51](https://github.com/user-attachments/assets/6a49ddc7-1c49-4347-8cc6-3cde08a5ad5d)
+
+- Sample of saved data
+
+ ![Screenshot from 2025-03-22 03-31-59](https://github.com/user-attachments/assets/6b837c9c-6de8-43b3-b31e-86e4cde2b946)
+
+
 
 ### 5️⃣ `/notify/`
 - Input: Same JSON as `/save/`
