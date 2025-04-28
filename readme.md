@@ -178,7 +178,7 @@ SMTP_PORT=587
 ## 📂 Project Structure
 
 ```
-📁 asal_project
+📁 files_project
 ├── app.py               # FastAPI main file
 ├── requirements.txt
 ├── .env
